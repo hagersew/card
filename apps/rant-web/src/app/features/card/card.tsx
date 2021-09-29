@@ -1,9 +1,15 @@
 import './card.module.scss';
 
 /* eslint-disable-next-line */
-export interface CardProps {}
+export interface ICardProps {
+  id: number,
+  ownerFullName: string,
+  cardNumber: string,
+  cvc: number,
+  expires: string
+}
 
-export function Card(props: CardProps) {
+export function Card(props: ICardProps) {
   return (
     <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
       <div className="relate py-3 sm:max-w-xl sm:mx-auto">
