@@ -5,7 +5,7 @@ import './add-card-form.module.scss';
 /* eslint-disable-next-line */
 export interface IAddCardFormProps {
   showAddCardDrawer: boolean;
-  setShowAddCardDrawer: (value:boolean) => void;
+  setShowAddCardDrawer: (value: boolean) => void;
 }
 
 export function AddCardForm(props: IAddCardFormProps) {
@@ -22,20 +22,26 @@ export function AddCardForm(props: IAddCardFormProps) {
       });
   };
 
-  const onDrawerClose = () =>{
-    props?.setShowAddCardDrawer(false)
-  }
+  const onDrawerClose = () => {
+    props?.setShowAddCardDrawer(false);
+  };
+
+
   return (
     <Drawer
+      closable
       title={<h1 className="font-bold text-xl">Add your card details</h1>}
       height={500}
-      closable
       placement="bottom"
       visible={props.showAddCardDrawer}
       onClose={onDrawerClose}
     >
-      <Form layout='vertical' form={addCardForm} onFinish={handleAddCardFormSubmit}>
-        <Form.Item label={<p className="font-bold"></p>}  name="cardName">
+      <Form
+        layout="vertical"
+        form={addCardForm}
+        onFinish={handleAddCardFormSubmit}
+      >
+        <Form.Item label={<p className="font-bold"></p>} name="cardName">
           <Input placeholder="John Doe" />
         </Form.Item>
         <Form.Item name="cardNumber">
