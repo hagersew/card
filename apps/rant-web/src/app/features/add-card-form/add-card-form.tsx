@@ -48,19 +48,20 @@ export function AddCardForm(props: IAddCardFormProps) {
           name="cardName"
           hasFeedback
           validateStatus={isValidName}
-          // rules={
-          //   [
-          //     ()=>({
-          //       validator(rule,value){
-          //         setIsValidName("validating");
-          //         if(value === ''){
-          //           setIsValidName("error");
-          //           return Promise.reject(new Error("Please enter unique name"))
-          //         }
-          //       }
-          //     })
-          //   ]
-          // }
+          rules={[
+            () => ({
+              validator(rule, value) {
+                setIsValidName('validating');
+                if (value === '') {
+                  setIsValidName('error');
+                  return Promise.reject(new Error('Please fill in your name'));
+                } else {
+                  setIsValidName('success');
+                  return Promise.resolve();
+                }
+              },
+            }),
+          ]}
         >
           <Input placeholder="John Doe" />
         </Form.Item>
@@ -79,7 +80,7 @@ export function AddCardForm(props: IAddCardFormProps) {
             () => ({
               validator(rule, value) {
                 setIsExpirayDate('validating');
-                if (!moment(value, 'MM/YY',true).isValid()) {
+                if (!moment(value, 'MM/YY', true).isValid()) {
                   setIsExpirayDate('error');
                   return Promise.reject(new Error('Please fill in your new'));
                 } else {
