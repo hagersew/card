@@ -1,39 +1,39 @@
 {
-  "creditCards": [
+  "allCards": [
     {
       "id": 1,
-      "ownerFullName": "Archambault Vasilechko",
-      "cardNumber": "5048376073379528",
-      "cvc": 2,
-      "expires": "12/2/2020"
+      "ownerFullName": "Eyde Romanin",
+      "cardNumber": "5610474367682729",
+      "cvc": 781,
+      "expires": "7/27/2021"
     },
     {
       "id": 2,
-      "ownerFullName": "Michail Tonkinson",
-      "cardNumber": "5108758373426207",
-      "cvc": 1,
-      "expires": "1/28/2021"
+      "ownerFullName": "Annabal Matteo",
+      "cardNumber": "3541610700118090",
+      "cvc": 16,
+      "expires": "10/11/2020"
     },
     {
       "id": 3,
-      "ownerFullName": "Blanca Grogan",
-      "cardNumber": "5108759217077040",
-      "cvc": 1,
-      "expires": "1/25/2021"
+      "ownerFullName": "Theodosia Bullers",
+      "cardNumber": "6763559588034998449",
+      "cvc": 656,
+      "expires": "6/16/2021"
     },
     {
       "id": 4,
-      "ownerFullName": "Boycie Heffy",
-      "cardNumber": "5108755223547877",
-      "cvc": 2,
-      "expires": "9/17/2021"
+      "ownerFullName": "Lorilee Haberfield",
+      "cardNumber": "3540514992556879",
+      "cvc": 168,
+      "expires": "10/2/2020"
     },
     {
       "id": 5,
-      "ownerFullName": "Arlyn Arnald",
-      "cardNumber": "5108755265536556",
-      "cvc": 1,
-      "expires": "3/12/2021"
+      "ownerFullName": "Ezechiel Fackney",
+      "cardNumber": "3538571027154710",
+      "cvc": 562,
+      "expires": "8/9/2021"
     }
   ]
 }
