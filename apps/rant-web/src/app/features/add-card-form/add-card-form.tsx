@@ -13,7 +13,8 @@ export function AddCardForm(props: IAddCardFormProps) {
   const [addCardForm] = Form.useForm();
   const { validateFields } = addCardForm;
   const [isValidName, setIsValidName] = useState<any>();
-  const [isExpirayDate, setIsExpirayDate] = useState<any>();
+  const [isValidExpirayDate, setIsExpirayDate] = useState<any>();
+  const [isValidCVC, setIsValidCVC] = useState<any>();
 
   const handleAddCardFormSubmit = async () => {
     await validateFields()
@@ -74,7 +75,7 @@ export function AddCardForm(props: IAddCardFormProps) {
         <Form.Item
           name="cardExpirayDate"
           label={<p className="font-semibold"> Expiry date</p>}
-          validateStatus={isExpirayDate}
+          validateStatus={isValidExpirayDate}
           hasFeedback
           rules={[
             () => ({
@@ -96,6 +97,22 @@ export function AddCardForm(props: IAddCardFormProps) {
         <Form.Item
           label={<p className="font-semibold"> CVC (Security code)</p>}
           name="cardCVC"
+          validateStatus={isValidCVC}
+          hasFeedback
+          rules={[
+            () => ({
+              validator(rule, value) {
+                setIsValidCVC('validating');
+                if (isNaN(value)) {
+                  setIsValidCVC('error');
+                  return Promise.reject(new Error('Please enter a valid security code'));
+                } else {
+                  setIsValidCVC('success');
+                  return Promise.resolve();
+                }
+              },
+            }),
+          ]}
         >
           <Input maxLength={3} placeholder="000" />
         </Form.Item>
