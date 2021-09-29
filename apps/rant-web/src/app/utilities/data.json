@@ -1,0 +1,39 @@
+{
+  "creditCards": [
+    {
+      "id": 1,
+      "ownerFullName": "Archambault Vasilechko",
+      "cardNumber": "5048376073379528",
+      "cvc": 2,
+      "expires": "12/2/2020"
+    },
+    {
+      "id": 2,
+      "ownerFullName": "Michail Tonkinson",
+      "cardNumber": "5108758373426207",
+      "cvc": 1,
+      "expires": "1/28/2021"
+    },
+    {
+      "id": 3,
+      "ownerFullName": "Blanca Grogan",
+      "cardNumber": "5108759217077040",
+      "cvc": 1,
+      "expires": "1/25/2021"
+    },
+    {
+      "id": 4,
+      "ownerFullName": "Boycie Heffy",
+      "cardNumber": "5108755223547877",
+      "cvc": 2,
+      "expires": "9/17/2021"
+    },
+    {
+      "id": 5,
+      "ownerFullName": "Arlyn Arnald",
+      "cardNumber": "5108755265536556",
+      "cvc": 1,
+      "expires": "3/12/2021"
+    }
+  ]
+}

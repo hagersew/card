@@ -150,6 +150,8 @@
               "nx run rant-web:postServe --configuration=development"
             ],
             "hmr": true,
+            "maxWorkers": 2,
+            "memoryLimit": 512,
             "liveReload": true
           },
           "configurations": {
