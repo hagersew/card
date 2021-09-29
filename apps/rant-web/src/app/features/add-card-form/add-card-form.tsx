@@ -2,8 +2,8 @@ import { Form, Drawer, Input } from 'antd';
 import { useState } from 'react';
 
 import './add-card-form.module.scss';
+import moment from 'moment';
 
-/* eslint-disable-next-line */
 export interface IAddCardFormProps {
   showAddCardDrawer: boolean;
   setShowAddCardDrawer: (value: boolean) => void;
@@ -12,7 +12,8 @@ export interface IAddCardFormProps {
 export function AddCardForm(props: IAddCardFormProps) {
   const [addCardForm] = Form.useForm();
   const { validateFields } = addCardForm;
-  const [isValidName, setIsValidName] = useState();
+  const [isValidName, setIsValidName] = useState<any>();
+  const [isExpirayDate, setIsExpirayDate] = useState<any>();
 
   const handleAddCardFormSubmit = async () => {
     await validateFields()
@@ -70,10 +71,26 @@ export function AddCardForm(props: IAddCardFormProps) {
           <Input placeholder="0000 0000 0000 0000" />
         </Form.Item>
         <Form.Item
+          name="cardExpirayDate"
           label={<p className="font-semibold"> Expiry date</p>}
-          name="cardExpiryDate"
+          validateStatus={isExpirayDate}
+          hasFeedback
+          rules={[
+            () => ({
+              validator(rule, value) {
+                setIsExpirayDate('validating');
+                if (!moment(value, 'MM/YY',true).isValid()) {
+                  setIsExpirayDate('error');
+                  return Promise.reject(new Error('Please fill in your new'));
+                } else {
+                  setIsExpirayDate('success');
+                  return Promise.resolve();
+                }
+              },
+            }),
+          ]}
         >
-          <Input placeholder="00/00" />
+          <Input name="cardExpirayDate" placeholder="00/00" />
         </Form.Item>
         <Form.Item
           label={<p className="font-semibold"> CVC (Security code)</p>}
