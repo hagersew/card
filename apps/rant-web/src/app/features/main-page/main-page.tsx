@@ -56,9 +56,11 @@ export function MainPage(props: IMainPageProps) {
           {allCardItems?.map((cardDetail: ICardDetailProps) => {
             return <Card cardDetail={cardDetail} />;
           })}
-          <Button className="flex flex-col justify-center" onClick={handleShowDrawer} type="primary">
-            Add Cards
-          </Button>
+          <div className="flex justify-center p-5">
+            <button onClick={handleShowDrawer} className="bg-blue-500 rounded-3xl text-white font-bold px-10 py-4 sm:max-w-xl sm:mx-auto md:w-3/6 lg:w-2/6">
+              Add new card
+            </button>
+          </div>
           <AddCardForm {...addCardFormProps} />
         </React.Fragment>
       )}

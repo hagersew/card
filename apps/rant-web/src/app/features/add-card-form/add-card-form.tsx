@@ -1,4 +1,5 @@
 import { Form, Drawer, Input } from 'antd';
+import { useState } from 'react';
 
 import './add-card-form.module.scss';
 
@@ -11,6 +12,7 @@ export interface IAddCardFormProps {
 export function AddCardForm(props: IAddCardFormProps) {
   const [addCardForm] = Form.useForm();
   const { validateFields } = addCardForm;
+  const [isValidName, setIsValidName] = useState();
 
   const handleAddCardFormSubmit = async () => {
     await validateFields()
@@ -26,7 +28,6 @@ export function AddCardForm(props: IAddCardFormProps) {
     props?.setShowAddCardDrawer(false);
   };
 
-
   return (
     <Drawer
       closable
@@ -41,16 +42,43 @@ export function AddCardForm(props: IAddCardFormProps) {
         form={addCardForm}
         onFinish={handleAddCardFormSubmit}
       >
-        <Form.Item label={<p className="font-bold"></p>} name="cardName">
+        <Form.Item
+          label={<p className="font-semibold">Name in card</p>}
+          name="cardName"
+          hasFeedback
+          validateStatus={isValidName}
+          // rules={
+          //   [
+          //     ()=>({
+          //       validator(rule,value){
+          //         setIsValidName("validating");
+          //         if(value === ''){
+          //           setIsValidName("error");
+          //           return Promise.reject(new Error("Please enter unique name"))
+          //         }
+          //       }
+          //     })
+          //   ]
+          // }
+        >
           <Input placeholder="John Doe" />
         </Form.Item>
-        <Form.Item name="cardNumber">
-          <Input placeholder="0000 0000 0000 0000 " />
+        <Form.Item
+          label={<p className="font-semibold"> Card number</p>}
+          name="cardNumber"
+        >
+          <Input placeholder="0000 0000 0000 0000" />
         </Form.Item>
-        <Form.Item name="cardExpiryDate">
+        <Form.Item
+          label={<p className="font-semibold"> Expiry date</p>}
+          name="cardExpiryDate"
+        >
           <Input placeholder="00/00" />
         </Form.Item>
-        <Form.Item name="cardCVC">
+        <Form.Item
+          label={<p className="font-semibold"> CVC (Security code)</p>}
+          name="cardCVC"
+        >
           <Input maxLength={3} placeholder="000" />
         </Form.Item>
       </Form>
