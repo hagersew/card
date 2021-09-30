@@ -17,7 +17,7 @@ export function Card(props: ICardProps) {
   return (
     <div key={props?.cardDetail?.id} className="bg-gray-100 flex flex-col justify-center sm:py-4 md:py-2">
       <div  className="py-2 sm:max-w-xl sm:mx-auto md:w-3/6 lg:w-2/6">
-        <div style={{backgroundColor:'#4C00C2'}} className="px-4 shadow-lg sm:rounded-3xl sm:p-20 md:p-10">
+        <div style={{backgroundColor:'#3B058E', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundImage: "url('../../../assets/icons/card-background-shape.svg')",}} className="px-4 shadow-lg sm:rounded-3xl sm:p-20 md:p-10">
           <div className="flex justify-between pb-10">
             <img src={'../../../assets/icons/mastercard-logo.svg'} className="w-auto h-6" alt="Card Logo" />
             <div className="flex space-x-2">
