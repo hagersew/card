@@ -140,7 +140,7 @@ export function AddCardForm(props: IAddCardFormProps) {
         </Form.Item>
       </Form>
           <div className="flex justify-center p-5">
-            <button style={{backgroundColor:'#4C00C2'}} onClick={handleAddCardFormSubmit} className="rounded-3xl text-white font-bold px-10 py-4 sm:max-w-xl sm:mx-auto md:w-3/6 lg:w-2/6">
+            <button style={{backgroundColor:'#4C00C2'}} className="rounded-3xl text-white font-bold px-10 py-4 sm:max-w-xl sm:mx-auto md:w-3/6 lg:w-2/6">
               Confirm
             </button>
           </div>
