@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import './add-card-form.module.scss';
 import moment from 'moment';
+import validator from 'validator';
 
 export interface IAddCardFormProps {
   showAddCardDrawer: boolean;
@@ -15,6 +16,7 @@ export function AddCardForm(props: IAddCardFormProps) {
   const [isValidName, setIsValidName] = useState<any>();
   const [isValidExpirayDate, setIsExpirayDate] = useState<any>();
   const [isValidCVC, setIsValidCVC] = useState<any>();
+  const [isValidCreditCard, setIsValidCreditCard] = useState<any>();
 
   const handleAddCardFormSubmit = async () => {
     await validateFields()
@@ -69,6 +71,22 @@ export function AddCardForm(props: IAddCardFormProps) {
         <Form.Item
           label={<p className="font-semibold"> Card number</p>}
           name="cardNumber"
+          validateStatus={isValidCreditCard}
+          hasFeedback
+          rules={[
+            () => ({
+              validator(rule, value) {
+                setIsValidCreditCard('validating');
+                if (!validator.isCreditCard(value)) {
+                  setIsValidCreditCard('error');
+                  return Promise.reject(new Error('Please enter a valid credit card number'));
+                } else {
+                  setIsValidCreditCard('success');
+                  return Promise.resolve();
+                }
+              },
+            }),
+          ]}
         >
           <Input placeholder="0000 0000 0000 0000" />
         </Form.Item>
