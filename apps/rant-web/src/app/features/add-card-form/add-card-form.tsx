@@ -101,7 +101,7 @@ export function AddCardForm(props: IAddCardFormProps) {
                 setIsExpirayDate('validating');
                 if (!moment(value, 'MM/YY', true).isValid()) {
                   setIsExpirayDate('error');
-                  return Promise.reject(new Error('Please fill in your new'));
+                  return Promise.reject(new Error('Please enter a valid expiray date'));
                 } else {
                   setIsExpirayDate('success');
                   return Promise.resolve();

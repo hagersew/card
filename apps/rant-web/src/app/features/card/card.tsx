@@ -37,7 +37,7 @@ export function Card(props: ICardProps) {
               <span className=" font-bold text-gray-200">{props?.cardDetail?.cardNumber}</span>
             </div>
             <div className="flex flex-col self-end">
-            <EditOutlined style={{fontSize: '24px', color:"white"}} />
+            <img src={'../../../assets/icons/edit-icon.svg'} className="w-auto h-6" alt="edit icon" />
             </div>
           </div>
         </div>
