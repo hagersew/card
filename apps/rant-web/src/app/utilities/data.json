@@ -5,35 +5,35 @@
       "ownerFullName": "Eyde Romanin",
       "cardNumber": "5610474367682729",
       "cvc": 781,
-      "expires": "7/27/2021"
+      "expires": "7/21"
     },
     {
       "id": 2,
       "ownerFullName": "Annabal Matteo",
       "cardNumber": "3541610700118090",
       "cvc": 16,
-      "expires": "10/11/2020"
+      "expires": "10/20"
     },
     {
       "id": 3,
       "ownerFullName": "Theodosia Bullers",
       "cardNumber": "6763559588034998449",
       "cvc": 656,
-      "expires": "6/16/2021"
+      "expires": "6/21"
     },
     {
       "id": 4,
       "ownerFullName": "Lorilee Haberfield",
       "cardNumber": "3540514992556879",
       "cvc": 168,
-      "expires": "10/2/2020"
+      "expires": "10/20"
     },
     {
       "id": 5,
       "ownerFullName": "Ezechiel Fackney",
       "cardNumber": "3538571027154710",
       "cvc": 562,
-      "expires": "8/9/2021"
+      "expires": "8/21"
     }
   ]
 }
