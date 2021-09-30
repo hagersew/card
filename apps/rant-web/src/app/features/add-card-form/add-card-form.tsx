@@ -36,7 +36,7 @@ export function AddCardForm(props: IAddCardFormProps) {
     <Drawer
       closable
       title={<h1 className="font-bold text-xl">Add your card details</h1>}
-      height={500}
+      height={600}
       placement="bottom"
       visible={props.showAddCardDrawer}
       onClose={onDrawerClose}
@@ -139,6 +139,11 @@ export function AddCardForm(props: IAddCardFormProps) {
           <Input maxLength={3} placeholder="000" />
         </Form.Item>
       </Form>
+          <div className="flex justify-center p-5">
+            <button style={{backgroundColor:'#4C00C2'}} onClick={handleAddCardFormSubmit} className="rounded-3xl text-white font-bold px-10 py-4 sm:max-w-xl sm:mx-auto md:w-3/6 lg:w-2/6">
+              Confirm
+            </button>
+          </div>
     </Drawer>
   );
 }

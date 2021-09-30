@@ -49,15 +49,17 @@ export function MainPage(props: IMainPageProps) {
         </div>
       ) : (
         <React.Fragment>
-          <div className="font-bold text-4xl  text-indigo-600">Your Cards</div>
-          <p className="px-2 text-gray-500">
+          <div style={{color:'#4C00C2'}} className="font-bold text-4xl">Your Cards</div>
+          <p 
+         style={{color:'#798291'}} 
+          className="px-2 text-gray-500">
             Add, edit or delete your cards any time
           </p>
           {allCardItems?.map((cardDetail: ICardDetailProps) => {
             return <Card cardDetail={cardDetail} />;
           })}
           <div className="flex justify-center p-5">
-            <button onClick={handleShowDrawer} className="bg-blue-500 rounded-3xl text-white font-bold px-10 py-4 sm:max-w-xl sm:mx-auto md:w-3/6 lg:w-2/6">
+            <button onClick={handleShowDrawer} style={{backgroundColor:'#4C00C2'}} className="rounded-3xl text-white font-bold px-10 py-4 sm:max-w-xl sm:mx-auto md:w-3/6 lg:w-2/6">
               Add new card
             </button>
           </div>
