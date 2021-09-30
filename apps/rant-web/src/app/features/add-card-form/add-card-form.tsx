@@ -124,7 +124,11 @@ export function AddCardForm(props: IAddCardFormProps) {
                 if (isNaN(value)) {
                   setIsValidCVC('error');
                   return Promise.reject(new Error('Please enter a valid security code'));
-                } else {
+                } else if(value === ''){
+                  setIsValidCVC('error');
+                  return Promise.reject(new Error('Please enter a valid security code'));
+                }
+                else {
                   setIsValidCVC('success');
                   return Promise.resolve();
                 }
