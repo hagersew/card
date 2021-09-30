@@ -1,8 +1,10 @@
 .app {
-  font-family: sans-serif;
+  font-family: 'CircularPro';
   min-width: 300px;
   max-width: 600px;
   margin: 50px auto;
+  src: url('./../assets/fonts/lineto-circular-pro-book.ttf');
+  background-color: #e5e5e5;
 }
 
 .app :global(.gutter-left) {
