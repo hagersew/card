@@ -1,9 +1,12 @@
 import './main-page.module.scss';
 import { allCards } from '../../utilities/data.json';
 import React, { useEffect, useState } from 'react';
-import { Button, Spin } from 'antd';
+import { Button, Drawer, Spin } from 'antd';
 import AddCardForm from '../add-card-form/add-card-form';
+import UpdateCardForm from '../update-card-form/update-card-form';
 import Card from '../card/card';
+import { CardForm } from '../form/form.common';
+import { CardType } from '../../types/cardType';
 
 /* eslint-disable-next-line */
 export interface IMainPageProps {}
@@ -40,6 +43,22 @@ export function MainPage(props: IMainPageProps) {
     };
   }, [allCardItems]);
 
+
+  const [ formMode, setFormMode ] = useState<string>("add");
+  const [ selectedCard, selectCard ] = useState<CardType | null>(null);
+  const openEditForm = (card : CardType) => {
+
+    setFormMode("edit");
+    setShowAddCardDrawer(true);
+    selectCard(card);
+  }
+
+  const openAddForm = () => {
+    setFormMode("add");
+    selectCard(null);
+    setShowAddCardDrawer(true);
+  }
+
   return (
     <div className="container mx-auto ">
       {loadingCards ? (
@@ -50,20 +69,38 @@ export function MainPage(props: IMainPageProps) {
       ) : (
         <React.Fragment>
           <div style={{color:'#4C00C2'}} className="font-bold text-4xl">Your Cards</div>
-          <p 
-         style={{color:'#798291'}} 
+          <p
+         style={{color:'#798291'}}
           className="px-2 text-gray-500">
             Add, edit or delete your cards any time
           </p>
           {allCardItems?.map((cardDetail: ICardDetailProps) => {
-            return <Card cardDetail={cardDetail} />;
+            return <Card cardDetail={cardDetail} editButtonCallback={openEditForm} />;
           })}
           <div className="flex justify-center p-5">
-            <button onClick={handleShowDrawer} style={{backgroundColor:'#4C00C2'}} className="rounded-3xl text-white font-bold px-10 py-4 sm:max-w-xl sm:mx-auto md:w-3/6 lg:w-2/6">
+            <button onClick={openAddForm} style={{backgroundColor:'#4C00C2'}} className="rounded-3xl text-white font-bold px-10 py-4 sm:max-w-xl sm:mx-auto md:w-3/6 lg:w-2/6">
               Add new card
             </button>
           </div>
-          <AddCardForm {...addCardFormProps} />
+
+          <Drawer
+            closable
+            title={<h1 className="font-bold text-xl">Add your card details</h1>}
+            height={600}
+            placement="bottom"
+            visible={showAddCardDrawer}
+            onClose={() => setShowAddCardDrawer(false)}
+          >
+            {
+              formMode == "add" ?
+                <AddCardForm  closeDrawer={() => setShowAddCardDrawer(false)} />
+                : formMode == "edit" ?
+                <UpdateCardForm initialValue={selectedCard} closeDrawer={() => setShowAddCardDrawer(false)} />
+                : null
+            }
+
+          </Drawer>
+
         </React.Fragment>
       )}
     </div>
