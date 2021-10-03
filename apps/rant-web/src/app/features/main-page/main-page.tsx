@@ -1,47 +1,20 @@
 import './main-page.module.scss';
-import { allCards } from '../../utilities/data.json';
-import React, { useEffect, useState } from 'react';
-import { Button, Drawer, Spin } from 'antd';
+import React, { useState } from 'react';
+import { Drawer, Spin } from 'antd';
 import AddCardForm from '../add-card-form/add-card-form';
 import UpdateCardForm from '../update-card-form/update-card-form';
 import Card from '../card/card';
-import { CardForm } from '../form/form.common';
 import { CardType } from '../../types/cardType';
+import { useCards } from './use-cards';
 
 /* eslint-disable-next-line */
 export interface IMainPageProps {}
-export interface ICardDetailProps {
-  id: number;
-  ownerFullName: string;
-  cardNumber: string;
-  cvc: number;
-  expires: string;
-}
 
 export function MainPage(props: IMainPageProps) {
-  const [allCardItems, setAllCardItems] = useState<ICardDetailProps[]>([]);
+
   const [showAddCardDrawer, setShowAddCardDrawer] = useState(false);
-  const [loadingCards, setLoadingCards] = useState(false);
-  const handleShowDrawer = () => {
-    setShowAddCardDrawer(true);
-  };
 
-  const addCardFormProps = {
-    showAddCardDrawer,
-    setShowAddCardDrawer,
-  };
-
-  useEffect(() => {
-    setLoadingCards(true);
-    // Simulating API call
-    allCards?.length && setAllCardItems(allCards);
-    setLoadingCards(false);
-    return () => {
-      // Cancel API calls
-      setLoadingCards(false);
-      setAllCardItems([]);
-    };
-  }, [allCardItems]);
+  const { loadingCards, allCardItems, addCard,updateCard } = useCards();
 
 
   const [ formMode, setFormMode ] = useState<string>("add");
@@ -74,7 +47,7 @@ export function MainPage(props: IMainPageProps) {
           className="px-2 text-gray-500">
             Add, edit or delete your cards any time
           </p>
-          {allCardItems?.map((cardDetail: ICardDetailProps) => {
+          {allCardItems?.map((cardDetail: CardType) => {
             return <Card cardDetail={cardDetail} editButtonCallback={openEditForm} />;
           })}
           <div className="flex justify-center p-5">
@@ -93,9 +66,9 @@ export function MainPage(props: IMainPageProps) {
           >
             {
               formMode == "add" ?
-                <AddCardForm  closeDrawer={() => setShowAddCardDrawer(false)} />
+                <AddCardForm  closeDrawer={() => setShowAddCardDrawer(false)} addCard={addCard} />
                 : formMode == "edit" ?
-                <UpdateCardForm initialValue={selectedCard} closeDrawer={() => setShowAddCardDrawer(false)} />
+                <UpdateCardForm initialValue={selectedCard} closeDrawer={() => setShowAddCardDrawer(false)} updateCard={updateCard} />
                 : null
             }
 

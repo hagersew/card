@@ -5,12 +5,14 @@ import { CardForm } from '../form/form.common';
 export interface IUpdateCardFormProps {
   closeDrawer : () => void;
   initialValue : CardType | null;
+  updateCard : (card : CardType) => void
 }
 
 export default function UpdateCardForm(props : IUpdateCardFormProps) {
 
   const updateCard = (value : CardType) => {
-    console.log(value);
+    value.id = props.initialValue?.id as number;
+    props.updateCard(value);
     props.closeDrawer();
   }
 
